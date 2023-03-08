@@ -1,17 +1,40 @@
 const mongoose = require('mongoose')
 
-const filmeSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
-    year: {
-        type: Number,
+    lastName:{
+        type: String,
         required: true,
     },
-    profit: Number
+    username: {
+        type: String,
+        lowercase: true,
+        required: true,
+        unique: true,
+    },
+    phone: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    created: {
+        type: Date, 
+        default: Date.now
+    }
 })
 
-const FilmeModel = mongoose.model('Filmes', filmeSchema)
+const UserModel = mongoose.model('Users', userSchema)
 
-module.exports = FilmeModel
+module.exports = UserModel
